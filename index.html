@@ -83,7 +83,7 @@ function display(i) {
   $("title").textContent = v.title.replace(/^I\.\s+|^II\.\s+|^III\.\s+|^IV\.\s+|^V\.\s+/, "");
   const pieces = v.title.split(":");
   $("topic").textContent = pieces.length > 1 ? pieces[1].trim() : "";
-  $("verse").textContent = v.verse;
+  $("verse").textContent = v.verse.replace(/\s+(?:[1-3]\s)?[A-Za-z]+(?:\s+[A-Za-z]+)*\s+\d+(?::\s?\d+(?:-\d+)?)?$/, "");
   $("reference").textContent = referenceFromVerse(v.verse);
   $("shareBtn").onclick = () => shareVerse(v);
   renderList();
