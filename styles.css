@@ -36,7 +36,7 @@ h1{font-family:Georgia,serif;font-size:clamp(30px,5vw,54px);margin:0 0 8px;color
   letter-spacing:0px;
   line-height:1.15;
   color:var(--green);
-  margin:0 0 0px;
+  margin:0 0 24px;
 }
 
 .topic::after{
