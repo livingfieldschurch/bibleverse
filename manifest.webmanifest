@@ -2,6 +2,7 @@
   "name": "Living Fields Church \u2014 Bible Memory",
   "short_name": "Living Fields",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#f7f4ec",
   "theme_color": "#244a36",
