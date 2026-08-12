@@ -31,9 +31,9 @@ main{max-width:980px;margin:auto;padding:32px 20px 60px}
 h1{font-family:Georgia,serif;font-size:clamp(30px,5vw,54px);margin:0 0 8px;color:var(--green)}
 .topic{
   font-family:'Cormorant Garamond',serif;
-  font-size:30px;
+  font-size:40px;
   font-weight:600;
-  letter-spacing:1.8px;
+  letter-spacing:0px;
   line-height:1.15;
   color:var(--green);
   margin:0 0 24px;
