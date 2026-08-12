@@ -36,7 +36,7 @@ h1{font-family:Georgia,serif;font-size:clamp(30px,5vw,54px);margin:0 0 8px;color
   letter-spacing:1.8px;
   line-height:1.15;
   text-transform:uppercase;
-  color:#3f6f8f;
+  color:var(--green);
   margin:0 0 24px;
 }
 #title{display:none}
