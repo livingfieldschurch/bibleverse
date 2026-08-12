@@ -50,12 +50,19 @@ h1{font-family:Georgia,serif;font-size:clamp(30px,5vw,54px);margin:0 0 8px;color
 #title{display:none}
 blockquote{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(30px,4.2vw,46px);
+  font-size:clamp(32px,4.5vw,50px);
   font-weight:500;
   line-height:1.25;
   letter-spacing:.2px;
   margin:0 auto 24px;
   max-width:820px;
+}
+blockquote::before{
+  content:"“";
+}
+
+blockquote::after{
+  content:"”";
 }
 .reference{
   font-family:'Montserrat',sans-serif;
