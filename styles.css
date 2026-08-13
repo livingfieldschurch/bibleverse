@@ -82,7 +82,7 @@ blockquote::after{
   margin-bottom:28px;
 }
 .primary{background:var(--green);color:white;border:0;border-radius:999px;padding:13px 20px;font-weight:800;cursor:pointer}
-.quick{display:flex;gap:10px;justify-content:center;padding:22px 0}
+.quick{display:flex;gap:20px;justify-content:center;padding:22px 0}
 .quick button{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:10px 16px;cursor:pointer}
 .history{margin-top:10px}
 .section-head{display:flex;gap:20px;align-items:end;justify-content:space-between;margin-bottom:14px}
