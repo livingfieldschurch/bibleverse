@@ -209,7 +209,7 @@ $("nextBtn").onclick = () => display(currentIndex + 1);
 
   } catch (error) {
     console.error(error);
-    alert("We couldn't enable reminders. Please try again.");
+alert("Reminder error: " + error.message);
   }
 };
 
