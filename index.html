@@ -170,8 +170,8 @@ $("nextBtn").onclick = () => display(currentIndex + 1);
     const registration = await navigator.serviceWorker.ready;
 
     const keyResponse = await fetch(
-      "https://summer-dew-6775.livingfields.workers.dev/vapid-public-key"
-    );
+  "https://living-fields-reminders-app.livingfields.workers.dev/vapid-public-key"
+);
 
     const { publicKey } = await keyResponse.json();
 
@@ -188,7 +188,7 @@ $("nextBtn").onclick = () => display(currentIndex + 1);
     }
 
     const saveResponse = await fetch(
-      "https://summer-dew-6775.livingfields.workers.dev/subscribe",
+      "https://living-fields-reminders-app.livingfields.workers.dev/subscribe",
       {
         method: "POST",
         headers: {
