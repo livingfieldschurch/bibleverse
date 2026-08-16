@@ -66,6 +66,15 @@ body{
   cursor:pointer;
   padding:8px;
 }
+.share-icon svg{
+  width:24px;
+  height:24px;
+  fill:none;
+  stroke:white;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
 
 .install{border:1px solid rgba(255,255,255,.5);background:transparent;color:white;border-radius:999px;padding:8px 14px}
 .hidden{display:none}
