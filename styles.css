@@ -26,6 +26,7 @@ body{margin:0;background:var(--cream);color:var(--ink);font-family:ui-sans-serif
   font-family:'Montserrat',sans-serif;
   font-size:10px;
   font-weight:500;
+  font-style:normal;
   letter-spacing:normal;
   margin-top:4px;
 }
