@@ -156,6 +156,21 @@ async function shareVerse(v) {
   }
 }
 
+async function shareApp() {
+  const url = "https://livingfieldschurch.github.io/bibleverse/";
+
+  if (navigator.share) {
+    await navigator.share({
+      title: "Living Fields Bible Memory",
+      text: "Check out Living Fields Bible Memory",
+      url
+    });
+  } else {
+    await navigator.clipboard.writeText(url);
+    alert("App link copied!");
+  }
+}
+
 function showQuestions(v) {
   const questions = v.questions || [];
 
@@ -168,7 +183,9 @@ function showQuestions(v) {
 $("prevBtn").onclick = () => display(currentIndex - 1);
 $("nextBtn").onclick = () => display(currentIndex + 1);
 
-  $("reminderBtn").onclick = async () => {
+$("shareAppBtn").onclick = () => shareApp();
+
+$("reminderBtn").onclick = async () => {
   try {
     if (!("serviceWorker" in navigator) || !("PushManager" in window)) {
       alert("Push notifications are not supported in this browser.");
