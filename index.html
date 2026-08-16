@@ -29,7 +29,7 @@
       <blockquote id="verse"></blockquote>
       <p class="reference" id="reference"></p>
      <div class="verse-actions">
-  <button id="shareBtn" class="primary">Share this verse</button>
+  <button id="questionsBtn" class="primary">Bible Verse Questions</button>
   <button id="reminderBtn" class="primary">Enable daily reminders</button>
 </div>
       
@@ -93,7 +93,7 @@ function display(i) {
   $("topic").textContent = v.title.replace(/^[IVX]+\.\s*/, "").trim();  
   $("verse").textContent = v.verse.replace(/\s+(?:[1-3]\s)?[A-Za-z]+(?:\s+[A-Za-z]+)*\s+\d+(?::\s?\d+(?:-\d+)?)?$/, "");
   $("reference").textContent = referenceFromVerse(v.verse);
-  $("shareBtn").onclick = () => shareVerse(v);
+  $("questionsBtn").onclick = () => showQuestions(v);
   renderList();
   window.scrollTo({top:0, behavior:"smooth"});
 }
@@ -147,10 +147,16 @@ async function shareVerse(v) {
     await navigator.share({title:"Bible Memory Verse", text});
   } else {
     await navigator.clipboard.writeText(text);
-    const old = $("shareBtn").textContent;
-    $("shareBtn").textContent = "Copied!";
-    setTimeout(() => $("shareBtn").textContent = old, 1400);
   }
+}
+
+function showQuestions(v) {
+  const questions = v.questions || [];
+
+  alert(
+    "Bible Verse Questions\n\n" +
+    questions.map((q, i) => `${i + 1}. ${q}`).join("\n\n")
+  );
 }
 
 $("prevBtn").onclick = () => display(currentIndex - 1);
