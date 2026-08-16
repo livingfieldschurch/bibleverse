@@ -1,6 +1,6 @@
 {
   "name": "Living Fields Church \u2014 Bible Memory",
-  "short_name": "Living Fields",
+  "short_name": "LF Bible Memory",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -9,7 +9,7 @@
   "description": "Weekly Bible memory verses for Living Fields Church.",
   "icons": [
     {
-      "src": "living-fields-logo.png",
+      "src": "lf-bible-memory-icon.png",
       "sizes": "1536x1536",
       "type": "image/png",
       "purpose": "any maskable"
