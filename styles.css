@@ -26,8 +26,8 @@ body{margin:0;background:var(--cream);color:var(--ink);font-family:ui-sans-serif
   font-family:'Montserrat',sans-serif;
   font-size:10px;
   font-weight:500;
-  font-style:normal;
-  letter-spacing:normal;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
   margin-top:4px;
 }
 .install{border:1px solid rgba(255,255,255,.5);background:transparent;color:white;border-radius:999px;padding:8px 14px}
