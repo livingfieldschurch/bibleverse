@@ -254,7 +254,7 @@ let deferredInstallPrompt = null;
 
 const installBtn = $("installBtn");
 
-// Detect whether the app is already installed
+// Hide the button when the site is already running as an installed app
 const isInstalled =
   window.matchMedia("(display-mode: standalone)").matches ||
   window.navigator.standalone === true;
@@ -263,27 +263,14 @@ if (isInstalled) {
   installBtn.style.display = "none";
 }
 
-// Android and other supported browsers
+// Save the browser's install prompt when available
 window.addEventListener("beforeinstallprompt", (event) => {
   event.preventDefault();
   deferredInstallPrompt = event;
 });
 
-installBtn.onclick = async () => {
-  // iPhone / iPad instructions
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-
-  if (isIOS) {
-    alert(
-      "To install this app on your iPhone:\n\n" +
-      "1. Tap the Share button at the bottom of Safari.\n" +
-      "2. Scroll down and tap 'Add to Home Screen'.\n" +
-      "3. Tap 'Add'."
-    );
-    return;
-  }
-
-  // Supported browsers with an install prompt
+installBtn.addEventListener("click", async () => {
+  // If the browser supports its own install prompt
   if (deferredInstallPrompt) {
     deferredInstallPrompt.prompt();
 
@@ -297,13 +284,20 @@ installBtn.onclick = async () => {
     return;
   }
 
-  // Fallback instructions
+  // Instructions for iPhone/iPad and browsers without an install prompt
   alert(
-    "To install this app, open your browser menu and choose 'Install app' or 'Add to Home Screen'."
+    "To install Living Fields Bible Memory:\n\n" +
+    "iPhone/iPad:\n" +
+    "1. Open this page in Safari.\n" +
+    "2. Tap the Share button.\n" +
+    "3. Choose 'Add to Home Screen'.\n" +
+    "4. Tap 'Add'.\n\n" +
+    "Other devices:\n" +
+    "Open your browser menu and choose 'Install app' or 'Add to Home Screen'."
   );
-};
+});
 
-// Hide button when installation happens
+// Hide the button if the browser reports that installation completed
 window.addEventListener("appinstalled", () => {
   installBtn.style.display = "none";
 });
