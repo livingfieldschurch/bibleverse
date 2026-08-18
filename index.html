@@ -30,7 +30,7 @@
   </svg>
 </button>
 
-  <button id="installBtn" class="install hidden">Install</button>
+  <button id="installBtn" class="install">Install App</button>
 </header>
 
 <main>
@@ -250,6 +250,63 @@ $("reminderBtn").onclick = async () => {
 alert("Reminder error: " + error.message);
   }
 };
+let deferredInstallPrompt = null;
+
+const installBtn = $("installBtn");
+
+// Detect whether the app is already installed
+const isInstalled =
+  window.matchMedia("(display-mode: standalone)").matches ||
+  window.navigator.standalone === true;
+
+if (isInstalled) {
+  installBtn.style.display = "none";
+}
+
+// Android and other supported browsers
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+});
+
+installBtn.onclick = async () => {
+  // iPhone / iPad instructions
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+  if (isIOS) {
+    alert(
+      "To install this app on your iPhone:\n\n" +
+      "1. Tap the Share button at the bottom of Safari.\n" +
+      "2. Scroll down and tap 'Add to Home Screen'.\n" +
+      "3. Tap 'Add'."
+    );
+    return;
+  }
+
+  // Supported browsers with an install prompt
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+
+    const choice = await deferredInstallPrompt.userChoice;
+
+    if (choice.outcome === "accepted") {
+      installBtn.style.display = "none";
+    }
+
+    deferredInstallPrompt = null;
+    return;
+  }
+
+  // Fallback instructions
+  alert(
+    "To install this app, open your browser menu and choose 'Install app' or 'Add to Home Screen'."
+  );
+};
+
+// Hide button when installation happens
+window.addEventListener("appinstalled", () => {
+  installBtn.style.display = "none";
+});
 
 function urlBase64ToUint8Array(base64String) {
   const padding = "=".repeat(
