@@ -250,6 +250,25 @@ $("reminderBtn").onclick = async () => {
 alert("Reminder error: " + error.message);
   }
 };
+async function updateReminderButton() {
+  if (!("serviceWorker" in navigator) || !("PushManager" in window)) {
+    return;
+  }
+
+  try {
+    const registration = await navigator.serviceWorker.ready;
+    const subscription = await registration.pushManager.getSubscription();
+
+    if (subscription) {
+      $("reminderBtn").textContent = "Daily reminders enabled ✓";
+      $("reminderBtn").disabled = true;
+    }
+  } catch (error) {
+    console.error("Could not check reminder subscription:", error);
+  }
+}
+
+updateReminderButton();  
 let deferredInstallPrompt = null;
 
 const installBtn = $("installBtn");
